@@ -13,6 +13,7 @@ Quick How-To:
   USAGE EXAMPLES
 
     cd sites/projectA/
-    mcp PackageName  # create a Magento package (not necessary if using 'mcm' below)
-    mcm PackageName ModuleName  # create a new module for a package (and create the package if it doesn't exist)
     mcc  # clear Magento cache
+    mcp <PackageName>  # create a Magento package (not necessary if using 'mcm' below)
+    mcm <PackageName> <ModuleName>  # create a new module for a package (and create the package if it doesn't exist)
+    mcfr <PackageName> <ModuleName> <FrontName>  # create a new frontend route 'FrontName' for PackageName_ModuleName

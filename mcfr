@@ -1,0 +1,9 @@
+#!/bin/bash
+. ${0%/*}/.magento-projects.inc.sh
+
+if [ ! -n "$1" -a ! -n "$2" -a ! -n "$3" ]; then
+  echo "usage: ${0##*/} <packageName> <moduleName> <frontName>"
+  exit 1
+fi
+
+${0%/*}/mcfr.php "$1" "$2" "$3"
