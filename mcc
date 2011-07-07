@@ -1,0 +1,13 @@
+#!/bin/sh
+. ${0%/*}/.magento-projects.inc.sh
+
+echo -n "* Clearing Magento cache and filesystem session data... "
+
+rm -rf var/cache/*
+rm -rf var/session/*
+rm -rf var/minifycache/*
+rm -rf downloader/pearlib/cache/*
+rm -rf downloader/pearlib/download/*
+rm -f downloader/pearlib/pear.ini
+
+echo "done"

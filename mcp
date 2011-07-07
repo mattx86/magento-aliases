@@ -1,0 +1,23 @@
+#!/bin/sh
+. ${0%/*}/.magento-projects.inc.sh
+
+packageName=""
+if [ -n "$1" ]; then
+  packageName="$1"
+else
+  echo "usage: ${0##*/} <package to create under app/code/local/>"
+  exit 1
+fi
+
+packagePath="$MAGENTO_PROJECT_PATH/app/code/local/$packageName"
+if [ ! -d "$packagePath" -a ! -f "$packagePath" ]; then
+  mkdir -p "$packagePath"
+  echo "* Magento package created at:"
+  echo "    $packagePath"
+  exit 0
+else
+  echo "* Pre-existing Magento package at:"
+  echo "    $packagePath"
+  echo "  * Aborting."
+  exit 1
+fi

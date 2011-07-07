@@ -1,0 +1,18 @@
+Quick How-To:
+
+
+  SETUP PROCESS
+
+    cd ~
+    git clone git://github.com/mattx86/magento-aliases.git
+    nano magento-aliases/.magento-projects.inc.sh   # edit PATH_TO_MAGENTO_PROJECTS variable if necessary
+    EXPORT_PATH="$HOME/magento-aliases:$PATH"
+    echo ""export PATH=\"$EXPORT_PATH\""" >> ~/.bashrc
+    export PATH=$EXPORT_PATH
+
+  USAGE EXAMPLES
+
+    cd sites/projectA/
+    mcp PackageName  # create a Magento package (not necessary if using 'mcm' below)
+    mcm PackageName ModuleName  # create a new module for a package (or create the package if it doesn't exist)
+    mcc  # clear Magento cache

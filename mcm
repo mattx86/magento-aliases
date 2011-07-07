@@ -1,0 +1,57 @@
+#!/bin/sh
+. ${0%/*}/.magento-projects.inc.sh
+
+packageName=""
+moduleName=""
+if [ -n "$1" ]; then
+  packageName="$1"
+else
+  echo "usage: ${0##*/} <package> <module to create>"
+  exit 1
+fi
+if [ -n "$2" ]; then
+  moduleName="$2"
+fi
+
+packagePath="$MAGENTO_PROJECT_PATH/app/code/local/$packageName"
+modulePath="$packagePath/$moduleName"
+if [ ! -d "$modulePath" -a ! -f "$modulePath" ]; then
+
+  # create file/directory structure
+  mkdir -p "$modulePath"/Block
+  mkdir -p "$modulePath"/controllers
+  mkdir -p "$modulePath"/etc/modules
+  mkdir -p "$modulePath"/Helper
+  mkdir -p "$modulePath"/Model
+  mkdir -p "$modulePath"/sql
+  touch "$modulePath/etc/config.xml"
+  touch "$modulePath/etc/modules/${packageName}_${moduleName}.xml"
+
+  # fill modulePath/etc/config.xml with default content
+  echo "<config>
+    <modules>
+        <${packageName}_${moduleName}>
+            <version>1.0</version>
+        </${packageName}_${moduleName}>
+    </modules>
+</config>" >> "$modulePath/etc/config.xml"
+
+  # fill modulePath/etc/modules/packageName_moduleName.xml with default content
+  echo "<config>
+    <modules>
+        <${packageName}_${moduleName}>
+            <active>true</active>
+            <codePool>local</codePool>
+        </${packageName}_${moduleName}>
+    </modules>
+</config>" >> "$modulePath/etc/modules/${packageName}_${moduleName}.xml"
+
+  echo "* Magento module created at:"
+  echo "    $modulePath"
+  exit 0
+else
+  echo "* Pre-existing Magento module at:"
+  echo "    $modulePath"
+  echo "  * Aborting."
+  exit 1
+fi
