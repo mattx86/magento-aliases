@@ -14,5 +14,5 @@ Quick How-To:
 
     cd sites/projectA/
     mcp PackageName  # create a Magento package (not necessary if using 'mcm' below)
-    mcm PackageName ModuleName  # create a new module for a package (or create the package if it doesn't exist)
+    mcm PackageName ModuleName  # create a new module for a package (and create the package if it doesn't exist)
     mcc  # clear Magento cache
