@@ -9,7 +9,7 @@ else
   exit 1
 fi
 
-packagePath="$MAGENTO_PROJECT_PATH/app/code/local/${packageName~}"
+packagePath="$MAGENTO_PROJECT_PATH/app/code/local/${packageName^}"
 if [ ! -d "$packagePath" -a ! -f "$packagePath" ]; then
   mkdir -p "$packagePath"
   echo "* Magento package created at:"
