@@ -16,4 +16,6 @@ Quick How-To:
     mcc  # clear Magento cache
     mcp <PackageName>  # create a Magento package (not necessary if using 'mcm' below)
     mcm <PackageName> <ModuleName>  # create a new module for a package (and create the package if it doesn't exist)
-    mcfr <PackageName> <ModuleName> <FrontName>  # create a new frontend route 'FrontName' for PackageName_ModuleName
+    mcfn <PackageName> <ModuleName> <FrontName>  # create a new frontend route 'FrontName' for PackageName_ModuleName
+    mcfa <PackageName> <ModuleName> <actionControllerName>  # create a new frontend action controller for PackageName_ModuleName
+    minitpmfa <PackageName> <ModuleName> <FrontName> <actionControllerName>  # equivalent to running mcp, mcm, mcfn, and mcfa.  (quick start alias)
