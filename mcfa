@@ -1,0 +1,32 @@
+#!/bin/bash
+. ${0%/*}/.magento-projects.inc.sh
+
+if [ ! -n "$1" -a ! -n "$2" -a ! -n "$3" ]; then
+  echo "usage: ${0##*/} <packageName> <moduleName> <actionControllerName>"
+  exit 1
+fi
+
+packageName="$1"
+moduleName="$2"
+actionControllerName="$3"
+
+packagePath="$MAGENTO_PROJECT_PATH/app/code/local/${packageName~}"
+modulePath="${packagePath}/${moduleName~}"
+actionCtrlName="${packageName~}_${moduleName~}_${actionControllerName~}Controller"
+actionCtrlPath="$modulePath/controllers/${actionControllerName~}Controller.php"
+
+echo "* Creating Magento frontend action controller '${actionControllerName}' at:"
+echo "    ${actionCtrlPath}"
+
+if [ ! -f "$actionCtrlPath" ]; then
+  echo "<?php
+
+class ${actionCtrlName} extends Mage_Core_Controller_Front_Action
+{
+}" > "$actionCtrlPath"
+  echo "  * Done."
+  exit 0
+else
+  echo "  * Aborting - pre-existing frontend action controller by that name."
+  exit 1
+fi

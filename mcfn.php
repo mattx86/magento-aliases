@@ -2,14 +2,12 @@
 <?php
 
 $magentoProjectPath = getcwd();
-$packageName = $argv[1];
-$moduleName = $argv[2];
+$packageName = ucfirst($argv[1]);
+$moduleName = ucfirst($argv[2]);
 $frontName = $argv[3];
 $frontNameLowercase = strtolower($frontName);
 
-$packagePath = "$magentoProjectPath/app/code/local/$packageName";
-$modulePath = "$packagePath/$moduleName";
-$configPath = "$modulePath/etc/config.xml";
+$configPath = "$magentoProjectPath/app/etc/config.xml";
 $configAsString = file_get_contents($configPath);
 
 $config = new SimpleXMLElement($configAsString);
@@ -32,4 +30,4 @@ $config = simplexml_load_string($tidy);
 // write it out
 $config->asXML($configPath);
 
-echo "* Added/updated Magento frontend route: $frontName => ${packageName}_${moduleName}\n\n";
+echo "* Added/updated Magento frontend route/FrontName: $frontName => ${packageName}_${moduleName}\n";

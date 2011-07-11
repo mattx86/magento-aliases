@@ -1,0 +1,19 @@
+#!/bin/bash
+. ${0%/*}/.magento-projects.inc.sh
+
+if [ ! -n "$1" -a ! -n "$2" -a ! -n "$3" ]; then
+  echo "usage: ${0##*/} <packageName> <moduleName> <frontName> <actionControllerName>"
+  exit 1
+fi
+
+packageName="$1"
+moduleName="$2"
+frontName="$3"
+actionControllerName="$4"
+
+${0%/*}/mcp "$packageName" && \
+${0%/*}/mcm "$packageName" "$moduleName" && \
+${0%/*}/mcfn "$packageName" "$moduleName" "$frontName" && \
+${0%/*}/mcfa "$packageName" "$moduleName" "$actionControllerName"
+
+exit $?
