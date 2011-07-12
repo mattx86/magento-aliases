@@ -19,3 +19,4 @@ Quick How-To:
     mcfn <PackageName> <ModuleName> <FrontName>  # create a new frontend route 'FrontName' for PackageName_ModuleName
     mcfa <PackageName> <ModuleName> <actionControllerName>  # create a new frontend action controller for PackageName_ModuleName
     minitpmfa <PackageName> <ModuleName> <FrontName> <actionControllerName>  # equivalent to running mcp, mcm, mcfn, and mcfa.  (quick start alias)
+    msfn  # show frontend frontnames
