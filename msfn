@@ -1,0 +1,4 @@
+#!/bin/bash
+. ${0%/*}/.magento-projects.inc.sh
+
+${0%/*}/msfn.php
