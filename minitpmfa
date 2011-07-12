@@ -14,6 +14,7 @@ actionControllerName="$4"
 ${0%/*}/mcp "$packageName" && \
 ${0%/*}/mcm "$packageName" "$moduleName" && \
 ${0%/*}/mcfn "$packageName" "$moduleName" "$frontName" && \
-${0%/*}/mcfa "$packageName" "$moduleName" "$actionControllerName"
+${0%/*}/mcfa "$packageName" "$moduleName" "$actionControllerName" && \
+${0%/*}/mcc
 
 exit $?
